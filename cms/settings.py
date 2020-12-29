@@ -56,19 +56,16 @@ DATABASE_ROUTERS = ['contact.router.CheckerRouter']
 
 
 DATABASES = {
-    'default':{
+    'default':{},
+    'validatedb':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'test1',
+        'NAME':'cms',
         'HOST':'127.0.0.1',
         'PORT':'3306',
         'USER':'root',
         'PASSWORD':'',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            'charset': 'utf8mb4',
-        }
     },
-    'contact':{
+    'contactdb':{
         'ENGINE':'djongo',
         'NAME':'cms',
     }

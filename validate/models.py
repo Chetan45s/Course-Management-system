@@ -15,6 +15,9 @@ class Courses(models.Model):
     fee = models.FloatField()
     students = models.ManyToManyField("Profile")
 
+    class Meta:
+        app_label = 'validate'
+
     def __str__(self):
         return self.name
     
@@ -26,18 +29,23 @@ class teachers(models.Model):
     image = models.ImageField(upload_to='profile_pics')
     department_name = models.ForeignKey("Department",on_delete=models.CASCADE)
 
+    class Meta:
+        app_label = 'validate'
+
     def __str__(self):
         return self.name
     
 
 class Department(models.Model):
-    hr = models.ForeignKey("teachers", on_delete=models.CASCADE,null=True,blank=True)
     name = models.CharField(max_length=500)
     desp = models.TextField(null=True,blank=True)
     image = models.ImageField(upload_to='profile_pics',null=True,blank=True)
 
+    class Meta:
+        app_label = 'validate'
+
     def __str__(self):
-        return f"{self.name} and {self.hr}"
+        return f"{self.name}"
     
 
 
@@ -53,6 +61,9 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     department = models.ForeignKey("Department", on_delete=models.CASCADE)
     validated = models.BooleanField(default=False)
+
+    class Meta:
+        app_label = 'validate'
 
     def __str__(self):
         return self.user.username
